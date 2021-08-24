@@ -1,0 +1,353 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0",
+        "title": "Manuscript Project",
+        "termsOfService": "Terms Of Service",
+        "contact": {
+            "name": "T&F team",
+            "url": "http://www.rave.com",
+            "email": "rave@northagateps.com"
+        },
+        "license": {
+            "name": "1.0.0 2020",
+            "url": "http://www.license.com"
+        }
+    },
+    "host": "5crwymmua6.execute-api.eu-west-1.amazonaws.com",
+    "basePath": "/dev",
+    "tags": [
+        {
+            "name": "manuscript-controller",
+            "description": "Manuscript Controller"
+        }
+    ],
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/manuscript/save": {
+            "post": {
+                "tags": [
+                    "manuscript-controller"
+                ],
+                "summary": "This API allows to Save Manuscript in Database",
+                "operationId": "saveManuscriptDetailsUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "jsonRequest",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ManuscriptRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Error"
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ],
+                "deprecated": false
+            }
+        }
+    },
+    "securityDefinitions": {
+        "apiKey": {
+            "type": "apiKey",
+            "name": "x-api-key",
+            "in": "header"
+        }
+    },
+    "definitions": {
+        "ArticleHistoryDate": {
+            "type": "object",
+            "properties": {
+                "acceptedDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "receivedDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "revisedDate": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            },
+            "title": "ArticleHistoryDate"
+        },
+        "Detail": {
+            "type": "object",
+            "properties": {
+                "acceptedDateNull": {
+                    "type": "boolean"
+                },
+                "articleHistoryDate": {
+                    "$ref": "#/definitions/ArticleHistoryDate"
+                },
+                "articleType": {
+                    "type": "string"
+                },
+                "articleTypeNull": {
+                    "type": "boolean"
+                },
+                "firstPage": {
+                    "type": "string"
+                },
+                "firstPageNull": {
+                    "type": "boolean"
+                },
+                "issueNumber": {
+                    "type": "string"
+                },
+                "issueNumberNull": {
+                    "type": "boolean"
+                },
+                "lastPage": {
+                    "type": "string"
+                },
+                "lastPageNull": {
+                    "type": "boolean"
+                },
+                "msNotes": {
+                    "type": "string"
+                },
+                "msNotesNull": {
+                    "type": "boolean"
+                },
+                "numberOfPages": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "numberOfPagesNull": {
+                    "type": "boolean"
+                },
+                "numberOfTypesetPages": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "numberOfTypesetPagesNull": {
+                    "type": "boolean"
+                },
+                "openDataBadgeNull": {
+                    "type": "boolean"
+                },
+                "openMaterialsBadgeNul1": {
+                    "type": "boolean"
+                },
+                "openScienceBadges": {
+                    "$ref": "#/definitions/OpenScienceBadges"
+                },
+                "preregisteredDataBadgeNull": {
+                    "type": "boolean"
+                },
+                "receivedDateNull": {
+                    "type": "boolean"
+                },
+                "revisedDateNull": {
+                    "type": "boolean"
+                },
+                "secondaryArticleId": {
+                    "type": "string"
+                },
+                "secondaryArticleIdNull": {
+                    "type": "boolean"
+                },
+                "sectionHeading": {
+                    "type": "string"
+                },
+                "sectionHeadingNull": {
+                    "type": "boolean"
+                },
+                "shortTitle": {
+                    "type": "string"
+                },
+                "shortTitleNull": {
+                    "type": "boolean"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "titleNull": {
+                    "type": "boolean"
+                },
+                "volumeNumber": {
+                    "type": "string"
+                },
+                "volumeNumberNull": {
+                    "type": "boolean"
+                }
+            },
+            "title": "Detail"
+        },
+        "ManuscriptRequest": {
+            "type": "object",
+            "properties": {
+                "articleId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "details": {
+                    "$ref": "#/definitions/Detail"
+                },
+                "eventId": {
+                    "type": "string"
+                },
+                "eventType": {
+                    "type": "string"
+                },
+                "updateIssueComposition": {
+                    "type": "boolean"
+                },
+                "vendor": {
+                    "type": "string"
+                }
+            },
+            "title": "ManuscriptRequest"
+        },
+        "OpenScienceBadges": {
+            "type": "object",
+            "properties": {
+                "openDataBadge": {
+                    "type": "string"
+                },
+                "openMaterialsBadge": {
+                    "type": "string"
+                },
+                "preregisteredDataBadge": {
+                    "type": "string"
+                }
+            },
+            "title": "OpenScienceBadges"
+        },
+        "Response": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "data": {
+                    "type": "string"
+                },
+                "failureCount": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "successCount": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "totalCount": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "validationMessages": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "validationResults": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ValidationResult"
+                    }
+                }
+            },
+            "title": "Response"
+        },
+        "ValidationResult": {
+            "type": "object",
+            "properties": {
+                "creationDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "dependentRule": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "eventId": {
+                    "type": "string"
+                },
+                "group": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "objectId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "objectType": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "ruleId": {
+                    "type": "string"
+                },
+                "section": {
+                    "type": "string"
+                },
+                "severity": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "validationResultId": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "ValidationResult"
+        }
+    }
+}
