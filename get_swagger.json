@@ -1,0 +1,207 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0",
+        "title": "TP WMS Project",
+        "termsOfService": "Terms Of Service",
+        "contact": {
+            "name": "T&F team",
+            "url": "http://www.rave.com",
+            "email": "rave@northagateps.com"
+        },
+        "license": {
+            "name": "1.0.0 2020",
+            "url": "http://www.license.com"
+        }
+    },
+    "host": "ycmu14xhb3.execute-api.eu-west-1.amazonaws.com",
+    "basePath": "/dev",
+    "tags": [
+        {
+            "name": "manuscript-controller",
+            "description": "Manuscript Controller"
+        }
+    ],
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/api/manuscript/{manuscript-id}": {
+            "get": {
+                "tags": [
+                    "manuscript-controller"
+                ],
+                "summary": "Get Manuscript by Id",
+                "operationId": "getManuscriptByIdUsingGET",
+                "produces": [
+                    "*/*"
+                ],
+                "parameters": [
+                    {
+                        "name": "manuscript-id",
+                        "in": "path",
+                        "description": "manuscript-id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Error"
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ],
+                "deprecated": false
+            }
+        }
+    },
+    "securityDefinitions": {
+        "apiKey": {
+            "type": "apiKey",
+            "name": "x-api-key",
+            "in": "header"
+        }
+    },
+    "definitions": {
+        "Manuscript": {
+            "type": "object",
+            "properties": {
+                "acceptedDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "copyRightYn": {
+                    "type": "string"
+                },
+                "doi": {
+                    "type": "string"
+                },
+                "enteredDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "fourColPagesPrint": {
+                    "type": "string"
+                },
+                "fourColPrintYn": {
+                    "type": "string"
+                },
+                "fourColourYn": {
+                    "type": "string"
+                },
+                "groupId": {
+                    "type": "string"
+                },
+                "manuscriptId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "msTypeId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "numFigures": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "numFourColour": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "numPages": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "numTables": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "numTypesetPages": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "onlineIssueId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "openDataBadgeYn": {
+                    "type": "string"
+                },
+                "openMaterialBadgeYn": {
+                    "type": "string"
+                },
+                "preRegisteredDataBadgeYn": {
+                    "type": "string"
+                },
+                "printIssueId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "receivedDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "revisedDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "rightsHolderId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "rightsholderDescription": {
+                    "type": "string"
+                },
+                "secondaryMsId": {
+                    "type": "string"
+                },
+                "sectionHeading": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "title": "Manuscript"
+        },
+        "Response": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "data": {
+                    "$ref": "#/definitions/Manuscript"
+                },
+                "message": {
+                    "type": "string"
+                }
+            },
+            "title": "Response"
+        }
+    }
+}
